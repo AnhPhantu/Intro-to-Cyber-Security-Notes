@@ -30,3 +30,46 @@ This notes included important commands and vocab for Kali Linux that would be he
 
 -cat "name"
 * a command that print what is in the file in the terminal
+
+-firefox "name". file
+* a command that open that file in firefox
+
+-wget 
+*a command that allows you to download a file if the irl is known
+
+-rm
+*a command used to remove file (not directories)
+
+-adduser "name"
+* a command that creat a user with password and other information
+
+-useradd "name"
+* a command that create a new user without other addtional info
+
+-passwd "username"
+* a command to add a password to the user
+
+-sudo
+* a command that allow the certain user to perform sensitve action
+
+-whoami
+* a command that provide with the acocunt you login as
+
+-userdel "name"
+* a command that delete a user
+
+-groupadd
+* a command that create a group in the system
+
+-usermod
+* a command that is used to make change to user
+
+-groups "name"
+*a command that see what group a user is in
+
+read is 4, write is 2, execute is 1
+Never put 777 for a file, that will give everyone access
+
+
+
+
