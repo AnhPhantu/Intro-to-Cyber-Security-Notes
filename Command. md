@@ -1,0 +1,32 @@
+# Important Commands forKali Linux
+This notes included important commands and vocab for Kali Linux that would be helpful in my cyber security class. 
+## Commands List
+-pwd
+ * print working directory (use to tell user where they are in directories).
+ 
+-ls, -ls-la, -ls-a, -ls-l
+* a command that "list" the current directory (-a shows us the hidden file , -l shows us more information about the file in the directory)
+
+-cd
+* a command that change the directory (to move into a certain directory that is chosen).
+
+-mkdir"name"
+* a command that make directory with a name
+
+-rmdir"name"
+* a command that remove the chosen directory
+
+-man "command"
+* a helpful command that give information about the chosen command
+
+-process/programs&
+* a command that allow other process and program to run in the background within Kali Linux
+
+-touch "name"
+* create a file or update the time stamp
+
+-leafpad "name"
+* open the leafpad app for text editing 
+
+-cat "name"
+* a command that print what is in the file in the terminal
