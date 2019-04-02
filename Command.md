@@ -1,4 +1,4 @@
-# Important Commands forKali Linux
+# Important Commands for Kali Linux
 This notes included important commands and vocab for Kali Linux that would be helpful in my cyber security class. 
 ## Commands List
 -pwd
