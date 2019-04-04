@@ -57,3 +57,48 @@ Internet Control Message Protocol
 
 DHCP
 * Dynamic Host Configuration Protocol
+
+Transport Layer (OSI Layer 4)
+* Delivers data from a process on one host to a process to another host (moving from a web broswer to a web server)
+
+TCP
+* Transmission Control Protocol: flow control and congestion control of data
+
+UDP
+* User Datagram Protocol: Connectionless and less control of flow
+
+Session and Presentation and Application (OSI Layer 5 and 6 and 7)
+
+DNS
+* Domain Name System, resolves domain name to IP address, and important in helping other protocol of application works.
+
+HTTP and HTTPS
+* Used for web browser interaction (s is secure)
+
+Email Protocols
+* SMTP: Simple mail transfer protocol and Post office protocol
+
+Secure Shell (SSH)
+* For remote access to other computer
+
+File Transfer Protocol (FTP)
+* For sharing file with other computers
+
+Network Adress Translation (NAT)
+* translate IP address into another, can also alow many host to used one public IP address
+
+-ipconfig
+* disply network config
+
+ping "Ip address"
+* send a ICMP ECHO request to a certain IP address
+
+netstat -na
+* display status of network connection
+
+nslookup website
+* ask DNS for a IP address of the certain website.
+
+Wireshark
+* a tool for network traffic capture and analyze protocol
+
