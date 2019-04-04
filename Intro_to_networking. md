@@ -102,3 +102,10 @@ nslookup website
 Wireshark
 * a tool for network traffic capture and analyze protocol
 
+Distributed Databased
+* provide mapping from domain name to IP adress, used UDP port 53
+
+HTML
+* Hypertext Markup Language: used to constructed web page
+
+
