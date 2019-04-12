@@ -1,0 +1,38 @@
+# Necromancer CTF Walkthrough
+Hacking Methodology is required to understand this CTF challenge
+- Recon, Gain Access, Privilage Escalation, Leaving a backdoor, Extracting Data, and  Covering your tracks
+## Start 
+- Begin with active recon to collect information about the machine, like the amount of flag, DHCP or stastic address. 
+- DHCP is enable auitomatically
+- Used Kali, make sure Kali is on the same network as Necromancer, and also boot Necromancer
+- Know the IP server of the machine as the DHCPOFFER, this is what DHCP offer the machine. His is 192.168.110.132
+- If you don't know that, used NMAP and IPconfig conmmand on terminal. Check the wired connection section. It also have detail on netmask
+- Used command -nmap -sP 192.168.110.* The star of this command scan the whole network 
+- It came up with a list of IP adress on the network.
+- Find who is the  default gateway using: route -n. This would help Jack to find the gateway to the connection to the LAN router that he should not poke
+- After that, Jack used command: sudo grep -R "DHCPOFFER" /var/log/* this command would give out a log of the DHCP offer to a certain machine, the star gives the command the power to search for everything.
+- This split out a the log from the DHCP offer that give IP address to a machine, help us find what DHCP the server as well. Which would subtract down the target IP Address
+- Jack, now open Zmap, and put on the target IP addess under intense scan command of: nmap -T4 -A -v 192.168.110.140, -v as in verbose
+- He scan an find out that the host is alive and also check the operating system, name, and architecture of the target machine
+- This Necromancer is on OpenBSD
+- Since it give Jack not much information, so he open up nmap to ran a UDP plus scan, using the command nmap -sU -pl -1000 192.168.110.140.
+- The scan back with a detail about the port and state service. As well as the MAC adress. Necromancer is on 666/udp open doom is the state service. 
+- Used netcat (nc) to connect to the port 666 for the IP address: the command is nc -u 192.168.110.140 666, this give him what ever he can able too. Jack get a respond.  
+- After that, he used wireshark to look at everything on the network to check for traffic. He check on TCP traffic with wireshark, however, there is nothing in TCP.
+- But he found out the TCP port of 4444 of the Necromancer machine
+- Jack goes back to terminal to used netcat command: nc -lvp 4444, forcing a verbose on the port 4444 and everything on it.- 
+- After that he used another terminal, used the same netcat command for udp again on port 666 to check if the TCP port has been activiate
+- Find out that he can heard things on port 4444, an get a string of code. This in the base 64.
+- Decode that, on the website and he found the first flag when he decode. 
+- He takes the flag and used hash id and input the flag and scan for possible hash, then he used that flag on a MD5 decode and found out it was "opensesame"
+- This is the first data that he got. 
+- Then he used netcat on terminal again  with  echo and pipe: echoopensesame|netcat -u 198.168.110.140 666, echo would spit "opensesame" into that netcat of the ip adress 
+- It spit out a story, Jack find another flag anf a hint with port 80 (http port)
+- Used MD5 decode, the second flag being  a number of 1033750779
+- Then using nmap command of :nmap -sT p-1 -1000 of the ip adress
+- This would give information on necromancer on port 80. 
+- In which he found a website with a picture, that he is able to used dirbuster on
+- Jack also assume there is a steggo inside a the picture; which he would used the command unzip.jpg
+- There is a txt file inside the picure, that include a base64 code.
+- Breaks the code, and he found the third flag with a information with a foward flag. Break it into MD5 and it give flag3 information
+- The /amagicbridgeappearatthechasm is appeared to be a website, in which is another clue.
